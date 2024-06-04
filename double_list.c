@@ -71,3 +71,38 @@ void insertarEnPosicion(Nodo** cabeza, int dato, int posicion) {
         actual->siguiente = nuevoNodo;
     }
 }
+
+// eliminar un nodo basado en el contenido del dato
+void eliminarNodo(Nodo** cabeza, int dato) {
+    if (*cabeza == NULL) {
+        return; // lista esta vacia
+    }
+
+    Nodo* actual = *cabeza;
+
+    // revisa lista hasta encontrar el nodo con el dato especificado
+    while (actual != NULL && actual->dato != dato) {
+        actual = actual->siguiente;
+    }
+
+    if (actual == NULL) {
+        return; // nodo no fue encontrado
+    }
+
+    // nodo a eliminar es la cabeza
+    if (actual == *cabeza) {
+        *cabeza = actual->siguiente;
+    }
+
+    // ajusta el puntero del nodo anterior
+    if (actual->anterior != NULL) {
+        actual->anterior->siguiente = actual->siguiente;
+    }
+
+    // ajusta el puntero del nodo siguiente
+    if (actual->siguiente != NULL) {
+        actual->siguiente->anterior = actual->anterior;
+    }
+
+    free(actual); // free memoria nodo
+}
