@@ -35,6 +35,16 @@ int main() {
         printf("Nodo con dato no encontrado (40). \n");
     }
 
+    // lista hacia adelante
+    printf("Lista en orden normal:\n");
+    imprimirLista(cabeza);
+
+    // lista hacia atras
+    printf("Lista en orden inverso:\n");
+    imprimirListaAlReves(cabeza);
+
+    // free memoria lista
+    liberarLista(cabeza);
 
 
     return 0;
