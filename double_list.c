@@ -106,3 +106,56 @@ void eliminarNodo(Nodo** cabeza, int dato) {
 
     free(actual); // free memoria nodo
 }
+
+// buscar un nodo basado en el contenido del dato
+Nodo* buscarNodo(Nodo* cabeza, int dato) {
+    Nodo* actual = cabeza;
+    while (actual != NULL) {
+        if (actual->dato == dato) {
+            return actual; // Nodo encontrado
+        }
+        actual = actual->siguiente;
+    }
+    return NULL; // Nodo no encontrado
+}
+
+// imprimir la lista hacia adelante
+void imprimirLista(Nodo* cabeza) {
+    Nodo* actual = cabeza;
+    while (actual != NULL) {
+        printf("%d ", actual->dato);
+        actual = actual->siguiente;
+    }
+    printf("\n");
+}
+
+// imprimir la lista hacia atras
+void imprimirListaAlReves(Nodo* cabeza) {
+    if (cabeza == NULL) {
+        return;
+    }
+    
+    // Encontrar el último nodo
+    Nodo* actual = cabeza;
+    while (actual->siguiente != NULL) {
+        actual = actual->siguiente;
+    }
+    
+    // Recorrer la lista desde el último nodo hacia el primero
+    while (actual != NULL) {
+        printf("%d ", actual->dato);
+        actual = actual->anterior;
+    }
+    printf("\n");
+}
+
+//  liberar la memoria de la lista
+void liberarLista(Nodo* cabeza) {
+    Nodo* actual = cabeza;
+    Nodo* siguiente;
+    while (actual != NULL) {
+        siguiente = actual->siguiente;
+        free(actual);
+        actual = siguiente;
+    }
+}
