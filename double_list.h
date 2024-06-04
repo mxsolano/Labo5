@@ -8,4 +8,16 @@ typedef struct Nodo {
     struct Nodo* siguiente;
 } Nodo;
 
+// para manipular la lista doblemente enlazada
+Nodo* crearNodo(int dato);
+void insertarAlInicio(Nodo** cabeza, int dato);
+void insertarAlFinal(Nodo** cabeza, int dato);
+void insertarEnPosicion(Nodo** cabeza, int dato, int posicion);
+void eliminarNodo(Nodo** cabeza, int dato);
+
+Nodo* buscarNodo(Nodo* cabeza, int dato);
+void imprimirLista(Nodo* cabeza);
+void imprimirListaAlReves(Nodo* cabeza);
+void liberarLista(Nodo* cabeza);
+
 #endif
